@@ -23,7 +23,11 @@ public class MainActivity extends AppCompatActivity {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Bundle b = new Bundle();
+                b.putStringArray("info", new String[]{"abc", "28", "C1907E"});
+
                 Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                intent.putExtras(b);
                 startActivity(intent);
             }
         });
