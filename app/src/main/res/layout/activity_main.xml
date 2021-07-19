@@ -5,27 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!--    <TextView-->
-    <!--        android:id="@+id/text_view_1"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:text="Hello word"></TextView>-->
-
-    <!--    <Button-->
-    <!--        android:id="@+id/button_1"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_below="@+id/text_view_1"-->
-    <!--        android:text="Click me" />-->
-
-    <!--    <SeekBar-->
-    <!--        android:id="@+id/seek_bar_1"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_below="@id/button_1"-->
-    <!--        android:max="10"-->
-    <!--        android:progress="8" />-->
-
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -42,4 +21,11 @@
         android:layout_height="wrap_content"
         android:layout_gravity="top|right"
         android:text="world" />
+
+    <Button
+        android:id="@+id/click_me"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        android:text="Hello" />
 </FrameLayout>
