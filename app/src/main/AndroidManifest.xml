@@ -9,11 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.C1907E_android">
-        <activity android:name=".LifecycleActivity"></activity>
+        <activity android:name=".SavedInstanceState"></activity>
+        <activity android:name=".LifecycleActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".SecondActivity" />
         <activity
-            android:name=".SavedInstanceState"
+            android:name=".Fragment"
             android:label="C1907E_Android"
             android:theme="@style/Theme.AppCompat.DayNight">
             <intent-filter>
