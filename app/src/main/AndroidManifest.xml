@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.C1907E_android">
         <activity
+            android:name=".CheckIpActivity"
+            android:exported="true" />
+        <activity
             android:name=".Fragment"
             android:exported="true" />
         <activity android:name=".SavedInstanceState" />
@@ -19,7 +22,7 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".SecondActivity" />
         <activity
-            android:name=".CheckIpActivity"
+            android:name=".ListViewActivity"
             android:label="C1907E_Android"
             android:theme="@style/Theme.AppCompat.DayNight">
             <intent-filter>

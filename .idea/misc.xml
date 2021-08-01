@@ -6,6 +6,8 @@
         <entry key="app/src/main/res/layout/activity_async_task.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_check_ip.xml" value="0.13177083333333334" />
         <entry key="app/src/main/res/layout/activity_check_net_work.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_list_view.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_list_view_name.xml" value="0.1" />
       </map>
     </option>
   </component>
