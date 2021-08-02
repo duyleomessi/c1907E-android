@@ -11,14 +11,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.c1907e_android.model.User;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class GithubUserAdapter extends RecyclerView.Adapter<GithubUserAdapter.ViewHolder> {
     private Context context;
-    private ArrayList<User> users;
+    private List<User> users;
 
-    public GithubUserAdapter(Context context, ArrayList<User> users) {
+    public GithubUserAdapter(Context context, List<User> users) {
         this.context = context;
         this.users = users;
     }
@@ -33,6 +35,7 @@ public class GithubUserAdapter extends RecyclerView.Adapter<GithubUserAdapter.Vi
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         User user = users.get(position);
+        Picasso.get().load(user.getAvatar()).into(holder.avatar);
         holder.username.setText(user.getLogin());
     }
 

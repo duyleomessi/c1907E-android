@@ -2,14 +2,14 @@ package com.example.c1907e_android.model;
 
 public class User {
     private String login;
-    private String avatar;
+    private String avatar_url;
 
     public User() {
     }
 
     public User(String login, String avatar) {
         this.login = login;
-        this.avatar = avatar;
+        this.avatar_url = avatar;
     }
 
     public String getLogin() {
@@ -21,11 +21,11 @@ public class User {
     }
 
     public String getAvatar() {
-        return avatar;
+        return avatar_url;
     }
 
     public void setAvatar(String avatar) {
-        this.avatar = avatar;
+        this.avatar_url = avatar;
     }
 }
 
