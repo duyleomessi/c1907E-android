@@ -10,7 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.c1907e_android.model.User;
+import com.example.c1907e_android.post.model.User;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -23,6 +23,17 @@ public class GithubUserAdapter extends RecyclerView.Adapter<GithubUserAdapter.Vi
     public GithubUserAdapter(Context context, List<User> users) {
         this.context = context;
         this.users = users;
+    }
+
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        private ImageView avatar;
+        private TextView username;
+
+        public ViewHolder(View view) {
+            super(view);
+            avatar = (ImageView) view.findViewById(R.id.rv_gh_user_avatar);
+            username = (TextView) view.findViewById(R.id.rv_gh_user_username);
+        }
     }
 
     @NonNull
@@ -44,14 +55,8 @@ public class GithubUserAdapter extends RecyclerView.Adapter<GithubUserAdapter.Vi
         return users.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        private ImageView avatar;
-        private TextView username;
-
-        public ViewHolder(View view) {
-            super(view);
-            avatar = (ImageView) view.findViewById(R.id.rv_gh_user_avatar);
-            username = (TextView) view.findViewById(R.id.rv_gh_user_username);
-        }
+    public void updateUsers(List<User> users) {
+        this.users = users;
+        notifyDataSetChanged();
     }
 }
