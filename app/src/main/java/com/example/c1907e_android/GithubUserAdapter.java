@@ -19,20 +19,31 @@ import java.util.List;
 public class GithubUserAdapter extends RecyclerView.Adapter<GithubUserAdapter.ViewHolder> {
     private Context context;
     private List<User> users;
+    private OnUserListener mOnUserListener;
 
-    public GithubUserAdapter(Context context, List<User> users) {
+    public GithubUserAdapter(Context context, List<User> users, OnUserListener mOnUserListener) {
         this.context = context;
         this.users = users;
+        this.mOnUserListener = mOnUserListener;
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private ImageView avatar;
         private TextView username;
+        OnUserListener onUserListener;
 
-        public ViewHolder(View view) {
-            super(view);
-            avatar = (ImageView) view.findViewById(R.id.rv_gh_user_avatar);
-            username = (TextView) view.findViewById(R.id.rv_gh_user_username);
+        public ViewHolder(View itemView, OnUserListener onUserListener) {
+            super(itemView);
+            avatar = (ImageView) itemView.findViewById(R.id.rv_gh_user_avatar);
+            username = (TextView) itemView.findViewById(R.id.rv_gh_user_username);
+            this.onUserListener = onUserListener;
+
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            onUserListener.onUserClick(getBindingAdapterPosition());
         }
     }
 
@@ -40,7 +51,7 @@ public class GithubUserAdapter extends RecyclerView.Adapter<GithubUserAdapter.Vi
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.rv_github_user, parent, false);
-        return new ViewHolder(view);
+        return new ViewHolder(view, mOnUserListener);
     }
 
     @Override
@@ -58,5 +69,9 @@ public class GithubUserAdapter extends RecyclerView.Adapter<GithubUserAdapter.Vi
     public void updateUsers(List<User> users) {
         this.users = users;
         notifyDataSetChanged();
+    }
+
+    public interface OnUserListener {
+        void onUserClick(int position);
     }
 }

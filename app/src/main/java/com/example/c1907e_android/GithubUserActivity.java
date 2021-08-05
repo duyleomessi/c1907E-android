@@ -63,7 +63,7 @@ public class GithubUserActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        rvUsers.setAdapter(new GithubUserAdapter(GithubUserActivity.this, users));
+//                        rvUsers.setAdapter(new GithubUserAdapter(GithubUserActivity.this, users));
                     }
                 });
             }

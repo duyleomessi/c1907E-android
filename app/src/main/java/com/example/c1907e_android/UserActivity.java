@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Window;
 
 import com.example.c1907e_android.post.model.User;
@@ -19,9 +20,10 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class UserActivity extends AppCompatActivity {
+public class UserActivity extends AppCompatActivity implements GithubUserAdapter.OnUserListener {
     RecyclerView rvUsers;
     private GithubUserAdapter githubUserAdapter;
+    List<User> users = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +36,7 @@ public class UserActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_github_user);
         rvUsers = (RecyclerView) findViewById(R.id.act_gh_user_rv);
-        githubUserAdapter = new GithubUserAdapter(this, new ArrayList<User>());
+        githubUserAdapter = new GithubUserAdapter(this, new ArrayList<User>(), this);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
         rvUsers.setLayoutManager(layoutManager);
         rvUsers.setAdapter(githubUserAdapter);
@@ -45,7 +47,6 @@ public class UserActivity extends AppCompatActivity {
     }
 
     public void loadGitHubUsers() {
-        List<User> users = new ArrayList<>();
         rvUsers = (RecyclerView) findViewById(R.id.act_gh_user_rv);
 
         Retrofit retrofit = new Retrofit.Builder()
@@ -57,7 +58,7 @@ public class UserActivity extends AppCompatActivity {
         userService.getUsers().enqueue(new Callback<List<User>>() {
             @Override
             public void onResponse(Call<List<User>> call, Response<List<User>> response) {
-                final List<User> users = response.body();
+                users = response.body();
                 githubUserAdapter.updateUsers(users);
                 setProgressBarIndeterminateVisibility(false);
                 setProgressBarVisibility(false);
@@ -68,5 +69,10 @@ public class UserActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public void onUserClick(int position) {
+        Log.d("position", "onUserClick: " + position);
     }
 }
