@@ -1,6 +1,6 @@
-package com.example.c1907e_android.post.service;
+package com.example.c1907e_android.user.service;
 
-import com.example.c1907e_android.post.model.User;
+import com.example.c1907e_android.user.model.User;
 
 import java.util.List;
 

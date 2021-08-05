@@ -4,12 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Window;
 
-import com.example.c1907e_android.post.model.User;
-import com.example.c1907e_android.post.service.UserService;
+import com.example.c1907e_android.user.model.User;
+import com.example.c1907e_android.user.service.UserService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -74,5 +75,9 @@ public class UserActivity extends AppCompatActivity implements GithubUserAdapter
     @Override
     public void onUserClick(int position) {
         Log.d("position", "onUserClick: " + position);
+        Intent intent = new Intent(UserActivity.this, UserDetailActivity.class);
+        User user = users.get(position);
+        intent.putExtra("userId", user.getId());
+        startActivity(intent);
     }
 }

@@ -1,11 +1,20 @@
-package com.example.c1907e_android.post.model;
+package com.example.c1907e_android.user.model;
 
 import com.google.gson.annotations.SerializedName;
 
 public class User {
+    private int id;
     private String login;
     @SerializedName("avatar_url")
     private String avatarUrl;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public User() {
     }
