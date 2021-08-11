@@ -3,38 +3,26 @@ package com.example.c1907e_android.auth.login.model;
 
 import com.google.gson.annotations.SerializedName;
 
-class Payload {
-    @SerializedName("token")
-    private String token;
-
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
-}
 
 public class LoginResponse {
     @SerializedName("success")
-    private boolean success;
+    private Boolean success;
     @SerializedName("payload")
-    private Payload payload;
+    private LoginResponsePayload payload;
 
-    public boolean isSuccess() {
+    public Boolean getSuccess() {
         return success;
     }
 
-    public void setSuccess(boolean success) {
+    public void setSuccess(Boolean success) {
         this.success = success;
     }
 
-    public Payload getPayload() {
+    public LoginResponsePayload getPayload() {
         return payload;
     }
 
-    public void setPayload(Payload payload) {
+    public void setPayload(LoginResponsePayload payload) {
         this.payload = payload;
     }
 }

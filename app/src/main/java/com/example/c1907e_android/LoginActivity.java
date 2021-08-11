@@ -2,7 +2,9 @@ package com.example.c1907e_android;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -58,11 +60,18 @@ public class LoginActivity extends AppCompatActivity {
                 .build();
 
         AuthService authService = retrofit.create(AuthService.class);
-        authService.login(new LoginRequest(usernameEditText.toString(), passwordEditText.toString())).enqueue(new Callback<LoginResponse>() {
+        authService.login(new LoginRequest(username, password)).enqueue(new Callback<LoginResponse>() {
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 loginResponse = response.body();
                 Log.e("LoginResponse", loginResponse.toString());
+                if (loginResponse.getSuccess()) {
+                    String jwt = loginResponse.getPayload().getJwt();
+                    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(LoginActivity.this);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString("acess-token", jwt);
+                    editor.commit();
+                }
             }
 
             @Override
