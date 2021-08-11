@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.C1907E_android">
         <activity
+            android:name=".UserActivity"
+            android:exported="true" />
+        <activity
             android:name=".UserDetailActivity"
             android:exported="true" />
         <activity
@@ -34,7 +37,7 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".SecondActivity" />
         <activity
-            android:name=".UserActivity"
+            android:name=".LoginActivity"
             android:label="C1907E_Android"
             android:theme="@style/Theme.AppCompat.DayNight">
             <intent-filter>
