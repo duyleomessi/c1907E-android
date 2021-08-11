@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.C1907E_android">
         <activity
+            android:name=".ListDeviceActivity"
+            android:exported="true" />
+        <activity
             android:name=".UserActivity"
             android:exported="true" />
         <activity

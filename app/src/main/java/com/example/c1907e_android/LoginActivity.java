@@ -2,6 +2,7 @@ package com.example.c1907e_android;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -44,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (usernameEditText.getText().length() > 0 && passwordEditText.getText().length() > 0) {
                     String toastMessage = "Username: " + usernameEditText.getText().toString() + ", Password: " + passwordEditText.getText().toString();
                     Toast.makeText(getApplicationContext(), toastMessage, Toast.LENGTH_SHORT).show();
-                    loginUser(usernameEditText.toString(), passwordEditText.toString());
+                    loginUser(usernameEditText.getText().toString(), passwordEditText.getText().toString());
                 } else {
                     String toastMessage = "Username or Password are both required";
                     Toast.makeText(getApplicationContext(), toastMessage, Toast.LENGTH_SHORT).show();
@@ -67,10 +68,13 @@ public class LoginActivity extends AppCompatActivity {
                 Log.e("LoginResponse", loginResponse.toString());
                 if (loginResponse.getSuccess()) {
                     String jwt = loginResponse.getPayload().getJwt();
-                    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(LoginActivity.this);
+                    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putString("acess-token", jwt);
                     editor.commit();
+
+                    Intent intent = new Intent(getApplicationContext(), ListDeviceActivity.class);
+                    startActivity(intent);
                 }
             }
 
